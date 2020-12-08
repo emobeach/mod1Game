@@ -47,6 +47,19 @@ function updateBoard(board, x, team){
     
 }
 
+//Sets AI Difficulty
+function setDifficulty(num, difficulty){
+
+}
+
+function setPlayers(num){
+
+}
+
+function startGame(){
+
+}
+
 
 
 //Execution Code
