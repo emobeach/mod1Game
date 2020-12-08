@@ -23,3 +23,8 @@ This is the Module 1 Project for Per Scholas Software Engineering
 1. Different Difficulty computer opponent
 2. maybe allow dimension changes?
 
+
+
+**AI Difficulty**
+1. All moves random 1-7
+2. Move analysis + weighted Choice
