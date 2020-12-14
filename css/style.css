@@ -1,9 +1,9 @@
-#container{
-    display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto;
-    grid-template-rows: 1 1 1 1 1 1;
+#board{
+    border: solid black 1px;
 }
-.children{
-    background-color: coral;
-    border: solid black 2px;
+button{
+    width: 47px;
+}
+#column{
+    margin-left: 25px;
 }

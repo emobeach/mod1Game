@@ -1,3 +1,5 @@
+let currentPlayer = 1
+
 //FUNCTIONS
 
 //Makes move, returns new board outcome
@@ -21,12 +23,6 @@ function inputRandom(num){
 //Returns a number from 0-6 inclusive
 function randomColumn(){ 
     return inputRandom(7)
-}
-
-
-//Ends Game
-function endGame(){
-
 }
 
 
@@ -84,13 +80,24 @@ function setPlayers(num){
 
 }
 
+
 function startGame(){
     let board = initBoard()
+    printBoard(board)
     let currentMove = 1
+    let userInput = ""
+    console.log(board)
     while(emptySpaces(board) > 0 && decideWinner(board) === 0){
         //Get User Input
-        console.log(`It is currently Player ${currentMove}'s Turn, Please enter your move:`)
-        //call makeMove(input, currentMove, board)
+        //console.log(`It is currently Player ${currentMove}'s Turn, Please enter your move:`)
+
+        //rl.question(`It is currently Player ${currentMove}'s Turn, Please enter your move:`, (input) =>{
+        //    userInput=parseInt(input)
+        //})
+
+
+
+        makeMove(userInput, currentMove, board)
 
         printBoard(board)
 
@@ -118,7 +125,7 @@ function emptySpaces(board){
     let count = 0
     for(let i = 0; i < board.length; i++)
         for(let j = 0; j < board[i].length; j++)
-            if(board[i][j] !== 0)
+            if(board[i][j] === 0)
                 count += 1
     return count
 }
@@ -135,10 +142,88 @@ function initBoard(){
     return board
 }
 
+function drawCircle(ctx, player, position){
+    console.log("drawing circle!")
+    let radius = 25
+    let color = ''
+    if(player === 1) color = 'red'
+    else if (player === 2) color = 'blue'
+    else color = 'white'
+    //arc(x,y,r,start,finish)
+    ctx.beginPath()
+    ctx.arc(position[0], position[1], radius, 0, Math.PI * 2)
+    ctx.fillStyle = color
+    ctx.fill()
+    ctx.stroke()
+}
+
+function swapPlayer(player){
+    if(player === 1) return 2
+    return 1
+}
+
+function drawBoard(board){
+    const canvas = document.getElementById('board')
+    console.log(canvas)
+    console.log(`height = ${canvas.height} width = ${canvas.width}`)
+    let ctx = canvas.getContext('2d')
+    for(let i = 0; i < board.length; i++){
+        for(let j = 0; j < board[i].length; j++){
+            console.log(`drawing circle at ${[(i+1) * 50, canvas.width - (j+1) * 50]}`)
+            console.log(`canvas width = ${canvas.width} j = ${j}`)
+            drawCircle(ctx, board[i][j], [(i+1) * 50, canvas.height - ((j+1) * 50)])
+        }
+    }
+}
+
 
 //Execution Code
-
+console.log("lewllllll")
 let foo = initBoard()
+$(document).ready(() =>{
+
+    drawBoard(foo)
+})
+$('#column0').click(()=>{
+     foo = makeMove(0, currentPlayer, foo)
+     currentPlayer = swapPlayer(currentPlayer)
+     drawBoard(foo)
+})
+$('#column1').click(()=>{
+    foo = makeMove(1, currentPlayer, foo)
+    currentPlayer = swapPlayer(currentPlayer)
+    drawBoard(foo)
+})
+$('#column2').click(()=>{
+    foo = makeMove(2, currentPlayer, foo)
+    currentPlayer = swapPlayer(currentPlayer)
+    drawBoard(foo)
+})
+$('#column3').click(()=>{
+    foo = makeMove(3, currentPlayer, foo)
+    currentPlayer = swapPlayer(currentPlayer)
+    drawBoard(foo)
+})
+$('#column4').click(()=>{
+    foo = makeMove(4, currentPlayer, foo)
+    currentPlayer = swapPlayer(currentPlayer)
+    drawBoard(foo)
+})
+$('#column5').click(()=>{
+    foo = makeMove(5, currentPlayer, foo)
+    currentPlayer = swapPlayer(currentPlayer)
+    drawBoard(foo)
+})
+$('#column6').click(()=>{
+    foo = makeMove(6, currentPlayer, foo)
+    currentPlayer = swapPlayer(currentPlayer)
+    drawBoard(foo)
+})
+
+//askQuestion("test")
+
+//drawBoard(initBoard())
+/*let foo = initBoard()
 foo = makeMove(0,1,foo)
 foo = makeMove(0,2,foo)
 foo = makeMove(0,1,foo)
@@ -157,4 +242,4 @@ foo = makeMove(4,1,foo)
 foo = makeMove(4,1,foo)
 
 printBoard(foo)
-console.log(decideWinner(foo))
+console.log(decideWinner(foo))*/
