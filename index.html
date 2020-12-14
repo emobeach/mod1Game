@@ -5,9 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript">
+            /* When the user clicks on the button,
+        toggle between hiding and showing the dropdown content */
+        function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+        }
+    
+    </script>
 
 </head>
 <body>
+    <h1>Connect 4!!!!! POGCHAMP</h1>
     <div id="column">
         <button id="column0">Go Here!</button>
         <button id="column1">Go Here!</button>
@@ -21,7 +30,13 @@
     <div id="container">
         <canvas id="board" width="400" height="350"></canvas>
     </div>
-
+    <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+        <div id="myDropdown" class="dropdown-content">
+          <button id="1player">1</button>
+          <button id="2player">2</button>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
 </body>
